@@ -166,11 +166,11 @@
 }
 
 \newcommand{\@titleTable}{
-\reversemarginpar\marginpar{\rotatebox{90}{\begin{tabular}{|l|l|l|l|l|}
+\reversemarginpar\marginpar{\rotatebox{90}{\begin{tabular}{|p{25mm}|p{35mm}|p{25mm}|p{25mm}|p{35mm}|}
 	\hline
-	Инв. \textnumero~подл & Подп. и дата & Взам. инв. \textnumero& Инв. \textnumero~дубл.&Подп. и дата\\
+	\rule{0mm}{5mm}Инв. \textnumero~подл & Подп. и дата & Взам. инв. \textnumero& Инв. \textnumero~дубл.&Подп. и дата\\
 	\hline
-	&   &   &   &  \\
+	\rule{0mm}{7mm}&   &   &   &  \\
 	\hline
 \end{tabular}}} 
 }
