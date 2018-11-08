@@ -1,3 +1,7 @@
+% creator: ilyakooo0
+% extra credit: dashared
+% version: 1.0.1
+
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{TechDoc}
@@ -78,20 +82,24 @@
 }
 \renewcommand\headrulewidth{0pt}
 
-\cfoot{
-\vspace{-7mm}
-\footnotesize{
-\begin{tabular}{|p{0.30\linewidth}|p{0.14\linewidth}|p{0.15\linewidth}|p{0.14\linewidth}|p{0.14\linewidth}|}
-		\hline
-		& & & & \\ \hline
-		Изм. & Лист & \textnumero~докум. & Подп. & Дата\\
-		\hline
-		\footnotesize{\@documentCode}& & & &\\
-		\hline
-		Инв. \textnumero~подл. & Подп. и дата & Взам. инв. \textnumero & Инв. \textnumero~дубл.& Подп. и дата \\
-		\hline
-	\end{tabular}
+\newcommand{\@foot}{
+	\vspace{-7mm}
+	\footnotesize{
+	\begin{tabular}{|p{0.30\linewidth}|p{0.14\linewidth}|p{0.15\linewidth}|p{0.14\linewidth}|p{0.14\linewidth}|}
+			\hline
+			& & & & \\ \hline
+			Изм. & Лист & \textnumero~докум. & Подп. & Дата\\
+			\hline
+			\footnotesize{\@documentCode}& & & &\\
+			\hline
+			Инв. \textnumero~подл. & Подп. и дата & Взам. инв. \textnumero & Инв. \textnumero~дубл.& Подп. и дата \\
+			\hline
+		\end{tabular}
+	}
 }
+
+\cfoot{
+\@foot
 }
 
 \setcounter{page}{2}
@@ -331,6 +339,8 @@
     \section{Лист регистрации изменений}
     \setcounter{secnumdepth}{4}
         
+    \cfoot{}
+        
     \begin{tabular}{|p{0.05\linewidth}|p{0.04\linewidth}|p{0.06\linewidth}|p{0.06\linewidth}|p{0.06\linewidth}|p{0.1\linewidth}|p{0.1\linewidth}|p{0.12\linewidth}|p{0.05\linewidth}|p{0.05\linewidth}|}
     	
     	\hline
@@ -364,6 +374,11 @@
     	& & & & & & & & & \\[5ex]
     	\hline
     \end{tabular}
+    
+    \newpage
+    \cfoot{
+    \@foot
+    }
 }
 
 
