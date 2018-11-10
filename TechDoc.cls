@@ -1,6 +1,6 @@
 % creator: ilyakooo0
 % extra credit: dashared
-% version: 1.0.1
+% version: 1.0.2
 
 \NeedsTeXFormat{LaTeX2e}
 
@@ -335,9 +335,9 @@
     
     \@startAdditions
     
-    \setcounter{secnumdepth}{0}
-    \section{Лист регистрации изменений}
-    \setcounter{secnumdepth}{4}
+    % \setcounter{secnumdepth}{0}
+    \section*{Лист регистрации изменений}
+    % \setcounter{secnumdepth}{4}
         
     \cfoot{}
         
