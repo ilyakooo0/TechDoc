@@ -1,6 +1,6 @@
 % creator: ilyakooo0
 % extra credit: dashared
-% version: 1.0.2
+% version: 1.0.3
 
 \NeedsTeXFormat{LaTeX2e}
 
@@ -202,11 +202,11 @@
     \@startAdditions
     \stepcounter{section}
     \begin{flushright}
-        \Large \textbf{\textsc{приложение \arabic{section}}}
+        \Large \textbf{\textsc{приложение \asbuk{section}}}
     \end{flushright}
     \setcounter{@tempSection}{\arabic{section}}
     \setcounter{secnumdepth}{0}
-    \section[Приложение \arabic{@tempSection}]{#1}
+    \section[Приложение \Asbuk{@tempSection}]{#1}
     \setcounter{secnumdepth}{4}
 }
 
