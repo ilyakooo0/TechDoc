@@ -1,6 +1,6 @@
 % creator: ilyakooo0
 % extra credit: dashared
-% version: 1.0.3
+% version: 1.0.4
 
 \NeedsTeXFormat{LaTeX2e}
 
@@ -47,7 +47,7 @@
 \setenumerate[3]{label={\roman*)}}
 
 
-\DeclareUnicodeCharacter{306}{{\color{red} \textbf{По всей видимости либо ты откуда-то не очень хорошо скопировал, либо у тиебя с вводом что-то не то потому что буква Й у тебя состоит из двух скаляров юникода. Удали этот Й и напечатай его заново. (Выйди и зайди норимально)} }}
+\DeclareUnicodeCharacter{306}{{\color{red} \textbf{По всей видимости либо ты откуда-то не очень хорошо скопировал, либо у тебя с вводом что-то не то, потому что буква Й у тебя состоит из двух скаляров юникода. Удали этот Й и напечатай его заново. (Выйди и зайди нормально)} }}
 
 \RequirePackage[main=russian,english]{babel}
 
@@ -70,6 +70,14 @@
 }
 
 \geometry{left=20mm, right=10mm, top=25mm, bottom=25mm, headheight=25mm}
+  
+\DeclareCaptionLabelSeparator{emdash}{ --- }
+\captionsetup{
+	justification=raggedright,
+	singlelinecheck=false,
+	labelsep=emdash
+}
+
  
  %% Header
  
