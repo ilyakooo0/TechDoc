@@ -49,7 +49,7 @@
 
 \DeclareUnicodeCharacter{306}{{\color{red} \textbf{По всей видимости либо ты откуда-то не очень хорошо скопировал, либо у тебя с вводом что-то не то, потому что буква Й у тебя состоит из двух скаляров юникода. Удали этот Й и напечатай его заново. (Выйди и зайди нормально)} }}
 
-\RequirePackage[main=russian,english]{babel}
+\RequirePackage[russian,english]{babel}
 
 \titlelabel{\thetitle.~}
 
