@@ -28,6 +28,7 @@
 \RequirePackage{tocloft}
 \RequirePackage{caption}
 \RequirePackage{etoolbox}
+\RequirePackage{iflang}
 
 \setcounter{secnumdepth}{4}
 
@@ -96,11 +97,11 @@
 	\begin{tabular}{|p{0.30\linewidth}|p{0.14\linewidth}|p{0.15\linewidth}|p{0.14\linewidth}|p{0.14\linewidth}|}
 			\hline
 			& & & & \\ \hline
-			Изм. & Лист & \textnumero~докум. & Подп. & Дата\\
+			\IfLanguageName{english}{Change}{Изм.} & \IfLanguageName{english}{Page}{Лист} & \IfLanguageName{english}{Document num.}{\textnumero~докум.} & \IfLanguageName{english}{Signature}{Подп.} & \IfLanguageName{english}{Date}{Дата}\\
 			\hline
 			\footnotesize{\@documentCode}& & & &\\
 			\hline
-			Инв. \textnumero~подл. & Подп. и дата & Взам. инв. \textnumero & Инв. \textnumero~дубл.& Подп. и дата \\
+			\IfLanguageName{english}{inv. num. of orig.}{Инв. \textnumero~подл.} & \IfLanguageName{english}{Sig. and date}{Подп. и дата} & \IfLanguageName{english}{inv. num.}{Взам. инв. \textnumero} & \IfLanguageName{english}{inv. num. of copy}{Инв. \textnumero~дубл.}& \IfLanguageName{english}{Sig. and date}{Подп. и дата} \\
 			\hline
 		\end{tabular}
 	}
@@ -126,15 +127,21 @@
     \renewcommand{\@title}{#1}
 }
 
-\newcommand{\@institute}{правительство российской федерации\\
+\newcommand{\@institute}{
+    \IfLanguageName{english}
+    {national research university\\<<higher school of economics>>}
+    {правительство российской федерации\\
 		национальный исследовательский университет \\
-		«высшая школа экономики»}
+		«высшая школа экономики»}}
 \newcommand{\institute}[1]{
     \renewcommand{\@institute}{#1}
 }
 
-\newcommand{\@faculty}{Факультет компьютерных наук\\
-		Департамент программной инженерии}
+\newcommand{\@faculty}{
+    \IfLanguageName{english}
+    {Faculty of Computer Science}
+    {Факультет компьютерных наук\\
+		Департамент программной инженерии}}
 \newcommand{\faculty}[1]{
     \renewcommand{\@faculty}{#1}
 }
@@ -146,9 +153,12 @@
     \renewcommand{\@academicTeacherName}{#2}
 }
 
-\newcommand{\@academicSupervisorName}{В. В. Шилов}
-\newcommand{\@academicSupervisorTitle}{Академический руководитель образовательной программы «Программная инженерия»
-				профессор департамента программной инженерии, канд. техн. наук}
+\newcommand{\@academicSupervisorName}{\IfLanguageName{english}{V. V. Shilov}{В. В. Шилов}}
+\newcommand{\@academicSupervisorTitle}{
+    \IfLanguageName{english}
+        {Academic supervisor of the <<software engineering>> programme, PhD}
+        {Академический руководитель образовательной программы «Программная инженерия»
+				профессор департамента программной инженерии, канд. техн. наук}}
 \newcommand{\academicSupervisor}[2]{
     \renewcommand{\@academicSupervisorTitle}{#1}
     \renewcommand{\@academicSupervisorName}{#2}
@@ -176,7 +186,7 @@
     \renewcommand{\@year}{#1}
 }
 
-\newcommand{\@city}{Москва}
+\newcommand{\@city}{\IfLanguageName{english}{Moscow}{Москва}}
 \newcommand{\city}[1]{
     \renewcommand{\@city}{#1}
 }
@@ -184,7 +194,7 @@
 \newcommand{\@titleTable}{
 \reversemarginpar\marginpar{\rotatebox{90}{\begin{tabular}{|p{25mm}|p{35mm}|p{25mm}|p{25mm}|p{35mm}|}
 	\hline
-	\rule{0mm}{5mm}Инв. \textnumero~подл & Подп. и дата & Взам. инв. \textnumero& Инв. \textnumero~дубл.&Подп. и дата\\
+	\rule{0mm}{5mm}\IfLanguageName{english}{inv. num. of orig.}{Инв. \textnumero~подл} & \IfLanguageName{english}{Sig. and date}{Подп. и дата} & \IfLanguageName{english}{inv. num}{Взам. инв. \textnumero}& \IfLanguageName{english}{inv. num. of copy}{Инв. \textnumero~дубл.}&\IfLanguageName{english}{Sig. and date}{Подп. и дата}\\
 	\hline
 	\rule{0mm}{7mm}&   &   &   &  \\
 	\hline
@@ -210,7 +220,7 @@
     \@startAdditions
     \stepcounter{section}
     \begin{flushright}
-        \Large \textbf{\textsc{приложение \asbuk{section}}}
+        \Large \textbf{\textsc{\IfLanguageName{english}{appendix}{приложение} \asbuk{section}}}
     \end{flushright}
     \setcounter{@tempSection}{\arabic{section}}
     \setcounter{secnumdepth}{0}
@@ -231,12 +241,12 @@
 
 		\begin{tabular}[h!]{P{0.45\textwidth}  P{0.45\textwidth}}
 
-			\textit{СОГЛАСОВАНО} & \textsl{УТВЕРЖДАЮ}\\
+			\textit{\IfLanguageName{english}{COORDINATED}{СОГЛАСОВАНО}} & \textsl{\IfLanguageName{english}{APPROVED}{УТВЕРЖДАЮ}}\\
 			& \\
 			\@academicTeacherTitle & \@academicSupervisorTitle \\
 			& \\
 			\underline{\hspace{4cm}} \@academicTeacherName & \underline{\hspace{4cm}} \@academicSupervisorName \\
-			<<\underline{\hspace{1cm}}>> \underline{\hspace{3cm}} \@year{} г. & <<\underline{\hspace{1cm}}>> \underline{\hspace{3cm}} \@year{} г.\\
+			<<\underline{\hspace{1cm}}>> \underline{\hspace{3cm}} \@year{} \IfLanguageName{english}{}{г.} & <<\underline{\hspace{1cm}}>> \underline{\hspace{3cm}} \@year{} \IfLanguageName{english}{}{г.}\\
 		\end{tabular}
 
 
@@ -249,7 +259,7 @@
 
 	\vspace{6mm}
 
-    \textbf{\textsc{Лист Утверждения}}
+    \textbf{\textsc{\IfLanguageName{english}{Approval Sheet}{Лист Утверждения}}}
 
 	\vspace{6mm}
 
@@ -262,11 +272,11 @@
 	\hfill
 	\begin{tabular}{c}
 	\\
-	Исполнитель: \@authorTitle
+	\IfLanguageName{english}{Author}{Исполнитель}: \@authorTitle
 	\\
 	\underline{\hspace{4cm}} \@author
 	\\
-	<<\underline{\hspace{1cm}}>> \underline{\hspace{4cm}} \@year~г.
+	<<\underline{\hspace{1cm}}>> \underline{\hspace{4cm}} \@year\IfLanguageName{english}{}{~г.}
 	\end{tabular}
 
     \@titleTable
@@ -294,7 +304,7 @@
 
     \newpage
 
-    \textbf{\textsc{Утверждён}}
+    \textbf{\textsc{\IfLanguageName{english}{Approved}{Утверждён}}}
 
     \textbf{\@documentCode{}-ЛУ}
 
@@ -313,7 +323,7 @@
 
     	\vspace{6mm}
 
-        \textbf{Листов \pageref{LastPage}}
+        \textbf{\IfLanguageName{english}{\pageref{LastPage} pages}{Листов \pageref{LastPage}}}
 
     \end{center}
 
@@ -344,7 +354,7 @@
     \@startAdditions
 
     % \setcounter{secnumdepth}{0}
-    \section*{Лист регистрации изменений}
+    \section*{\IfLanguageName{english}{Change registration sheet}{Лист регистрации изменений}}
     % \setcounter{secnumdepth}{4}
 
     \cfoot{}
@@ -352,8 +362,8 @@
     \begin{tabular}{|p{0.05\linewidth}|p{0.04\linewidth}|p{0.06\linewidth}|p{0.06\linewidth}|p{0.06\linewidth}|p{0.1\linewidth}|p{0.1\linewidth}|p{0.12\linewidth}|p{0.05\linewidth}|p{0.05\linewidth}|}
 
     	\hline
-    	\multirow{2}{*}{Изм.} & \multicolumn{4}{c|}{Номера листов} & Всего листов в документе & \textnumero{} доку-мента & Входящий \textnumero{} сопрово-дит.~докум. и дата & Под-пись & Дата \\ [5ex] \cline{2-5}
-    	& из-ме-нен-ных & заме-нен-ных & но-вых & анну-лиро-ван-ных &  &  &  &  & \\[10ex]
+    	\multirow{2}{*}{\IfLanguageName{english}{\shortstack[l]{Cha-\\nge}}{Изм.}} & \multicolumn{4}{c|}{\IfLanguageName{english}{Page number}{Номера листов}} & \IfLanguageName{english}{Total number of pages}{Всего листов в документе} & \IfLanguageName{english}{Document number}{\textnumero{} доку-мента} & \IfLanguageName{english}{Number of accompanying documents and date}{Входящий \textnumero{} сопрово-дит.~докум. и дата} & \IfLanguageName{english}{Sig-na-ture}{Под-пись} & \IfLanguageName{english}{Date}{Дата} \\ [5ex] \cline{2-5}
+    	& \IfLanguageName{english}{Mo-di-fied}{из-ме-нен-ных} & \IfLanguageName{english}{Re-pla-ced}{заме-нен-ных} & \IfLanguageName{english}{Ad-ded}{но-вых} & \IfLanguageName{english}{An-nul-led}{анну-лиро-ван-ных} &  &  &  &  & \\[10ex]
     	\hline
     	& & & & & & & & & \\[5ex]
     	\hline
@@ -454,5 +464,9 @@
 }
 
 \titleformat{\section}[block]{\Large\bfseries\filcenter}{\thesection.}{0mm}{~}
+
+\newcommand{\sectionsAreChapters}{
+    \titleformat{\section}[block]{\Large\bfseries\filcenter}{\IfLanguageName{english}{Chapter}{Глава} \thesection.}{0mm}{~}
+}
 
 \newcommand{\sectionbreak}{\clearpage}
